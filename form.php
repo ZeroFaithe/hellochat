@@ -48,28 +48,30 @@ function test_input($data) {
 
 <!-- ACCOUNT FORM -->
 <h2>Create Account</h2>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+<form action="<?php echo htmlspecialchars('submit.php');?>" method="POST">
+    <h3>Account Information</h3>
     Username: <input type="text" name="username" required><br/>
     Password: <input type="password" name="password" required><br/>
     Email: <input type="email" name="email" required><br/>
-    <input type="submit" name="account_submit" value="Create Account"/>
-</form>
 
-<!-- USER FORM -->
-<h2>Create User</h2>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-    Account ID (link to tbl_account): <input type="number" name="account_id" required><br/>
+
+    <h3>Create</h3>
     Firstname: <input type="text" name="firstname" required><br/>
     Middlename: <input type="text" name="middlename"><br/>
     Lastname: <input type="text" name="lastname" required><br/>
+
+
     Gender: 
-        <select name="gender" required>
-            <option value="">Please select one</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-        </select><br/>
+    <select name="gender" required>
+    <option value="">Please select one</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <</select><br/>
+    
     Date of Birth: <input type="date" name="dob" required><br/>
-    <input type="submit" name="user_submit" value="Create User"/>
+
+    <br/>
+    <input type="submit" name="registration_submit" value="Register Now"/>
 </form>
 
 <!-- Display joined table -->
@@ -85,6 +87,7 @@ function test_input($data) {
     <th>DOB</th>
     <th>Date Created</th>
     <th>Date Updated</th>
+
     <?php
     $sql = "SELECT a.id, a.username, a.email, u.firstname, u.middlename, u.lastname, 
                    CASE WHEN u.gender=1 THEN 'Male' WHEN u.gender=2 THEN 'Female' END AS gender,
